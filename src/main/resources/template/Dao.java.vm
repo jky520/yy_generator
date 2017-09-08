@@ -1,0 +1,15 @@
+package ${package}.dao;
+
+import ${package}.entity.${className}Entity;
+import cn.gzyinyuan.yy.modules.sys.dao.BaseDao;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * ${comments}
+ * 
+ * Created by ${email} on ${date}.
+ */
+@Mapper
+public interface ${className}Dao extends BaseDao<${className}Entity> {
+	
+}
