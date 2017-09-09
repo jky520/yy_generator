@@ -48,6 +48,7 @@ public class SysGeneratorController {
     /**
      * 生成代码
      */
+    @ResponseBody
     @RequestMapping("/code")
     public void code(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String[] tableNames = new String[]{};
@@ -63,6 +64,6 @@ public class SysGeneratorController {
 
         IOUtils.write(data, response.getOutputStream());*/
         String rs = sysGeneratorService.generatorCode(tableNames);
-        response.getWriter().write("<script>alert('生成代码成功！');</script>");
+        response.getWriter().write(rs);
     }
 }

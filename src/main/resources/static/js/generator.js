@@ -54,14 +54,22 @@ var vm = new Vue({
 			if(tableNames == null){
 				return ;
 			}
-			$.ajax({
-                type: 'get',
-                url: "sys/generator/code?tables=" + JSON.stringify(tableNames),
-                /*success: function (data) {
-                    alert(data)
-                }*/
-            });
 			//location.href = "sys/generator/code?tables=" + JSON.stringify(tableNames);
+            $.ajax({
+                type: "get",
+                url: "/sys/generator/code?tables=" + JSON.stringify(tableNames),
+                //dataType: "json",
+                success: function(r){
+                    if(r.code == 0){
+                        layer.close(index);
+                        layer.alert('生成代码成功！', function(){
+                            location.reload();
+                        });
+                    }else{
+                        layer.alert(r.msg);
+                    }
+                }
+            });
 		}
 	}
 });
