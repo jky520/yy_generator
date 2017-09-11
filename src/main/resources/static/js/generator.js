@@ -58,10 +58,10 @@ var vm = new Vue({
             $.ajax({
                 type: "get",
                 url: "/sys/generator/code?tables=" + JSON.stringify(tableNames),
-                //dataType: "json",
+                dataType: "json",
                 success: function(r){
                     if(r.code == 0){
-                        layer.close(index);
+                        //layer.close(index);
                         layer.alert('生成代码成功！', function(){
                             location.reload();
                         });

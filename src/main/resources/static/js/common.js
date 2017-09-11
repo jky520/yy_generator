@@ -6,6 +6,11 @@ $.jgrid.defaults.styleUI = 'Bootstrap';
 //工具集合Tools
 window.T = {};
 
+//请求前缀
+//var baseURL = "http://demo.open.renren.io/renren-fast/";
+//var baseURL = "/renren-fast/";
+var baseURL = "/";
+
 // 获取请求参数
 // 使用示例
 // location.href = http://localhost:8080/index.html?id=123

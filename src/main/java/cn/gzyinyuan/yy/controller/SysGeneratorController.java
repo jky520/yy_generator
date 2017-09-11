@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,7 @@ import java.util.Map;
  * 代码生成器
  * Created by DT人 on 2017/9/8 14:31.
  */
-@Controller
+@RestController
 @RequestMapping("/sys/generator")
 public class SysGeneratorController {
 
@@ -32,7 +33,6 @@ public class SysGeneratorController {
     /**
      * 列表
      */
-    @ResponseBody
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         //查询列表数据
@@ -48,9 +48,8 @@ public class SysGeneratorController {
     /**
      * 生成代码
      */
-    @ResponseBody
     @RequestMapping("/code")
-    public void code(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public R code(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String[] tableNames = new String[]{};
         String tables = request.getParameter("tables");
         tableNames = JSON.parseArray(tables).toArray(tableNames);
@@ -64,6 +63,7 @@ public class SysGeneratorController {
 
         IOUtils.write(data, response.getOutputStream());*/
         String rs = sysGeneratorService.generatorCode(tableNames);
-        response.getWriter().write(rs);
+        //response.getWriter().write("生成代码成功！");
+        return  R.ok("生成代码成功！");
     }
 }
