@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -192,7 +194,7 @@ public class GenUtils {
      * 获取文件名
      */
     public static String getFileName(String template, String className, String packageName){
-        String packagePath = "main" + File.separator + "java" + File.separator;
+        String packagePath = "src" + File.separator + "main" + File.separator + "java" + File.separator;
         if(StringUtils.isNotBlank(packageName)){
             packagePath += packageName.replace(".", File.separator) + File.separator;
         }
@@ -218,17 +220,17 @@ public class GenUtils {
         }
 
         if(template.contains("Dao.xml.vm")){
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
+            return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
         }
 
         if(template.contains("list.html.vm")){
-            return "main" + File.separator + "resources" + File.separator + "views" + File.separator
-                    + "modules" + File.separator + "generator" + File.separator + className.toLowerCase() + ".html";
+            return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "views" + File.separator
+                    + "modules" + File.separator + "mall" + File.separator + className.toLowerCase() + ".html";
         }
 
         if(template.contains("list.js.vm")){
-            return "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
-                    + "modules" + File.separator + "generator" + File.separator + className.toLowerCase() + ".js";
+            return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
+                    + "modules" + File.separator + "mall" + File.separator + className.toLowerCase() + ".js";
         }
 
         if(template.contains("menu.sql.vm")){
