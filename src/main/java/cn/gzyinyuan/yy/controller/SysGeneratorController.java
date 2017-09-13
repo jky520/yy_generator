@@ -64,6 +64,6 @@ public class SysGeneratorController {
         IOUtils.write(data, response.getOutputStream());*/
         String rs = sysGeneratorService.generatorCode(tableNames);
         //response.getWriter().write("生成代码成功！");
-        return  R.ok("生成代码成功！");
+        return  R.ok();
     }
 }

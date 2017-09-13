@@ -223,14 +223,17 @@ public class GenUtils {
             return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
         }
 
+        // 获得视图模块目录
+        String fold = Stream.of(packageName.substring(packageName.indexOf("modules")).replace(".", "&").split("&")).limit(2).skip(1).collect(Collectors.joining());
+
         if(template.contains("list.html.vm")){
             return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "views" + File.separator
-                    + "modules" + File.separator + "mall" + File.separator + className.toLowerCase() + ".html";
+                    + "modules" + File.separator + fold + File.separator + className.toLowerCase() + ".html";
         }
 
         if(template.contains("list.js.vm")){
             return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
-                    + "modules" + File.separator + "mall" + File.separator + className.toLowerCase() + ".js";
+                    + "modules" + File.separator + fold + File.separator + className.toLowerCase() + ".js";
         }
 
         if(template.contains("menu.sql.vm")){
