@@ -53,6 +53,6 @@
 	</div>
 </div>
 
-<script src="../../js/modules/generator/${pathName}.js"></script>
+<script src="../../js/${viewPackage}/${pathName}.js"></script>
 </body>
 </html>

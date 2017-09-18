@@ -115,6 +115,7 @@ public class GenUtils {
         map.put("email", config.getString("email"));
         map.put("date", DateUtils.format(new Date(), DateUtils.DATE_PATTERN));
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+        map.put("viewPackage", config.getString("viewPackage"));
 
         VelocityContext context = new VelocityContext(map);
 
@@ -219,12 +220,12 @@ public class GenUtils {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }
 
-        if(template.contains("Dao.xml.vm")){
-            return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
-        }
-
         // 获得视图模块目录
         String fold = Stream.of(packageName.substring(packageName.indexOf("modules")).replace(".", "&").split("&")).limit(2).skip(1).collect(Collectors.joining());
+
+        if(template.contains("Dao.xml.vm")){
+            return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + fold + File.separator + className + "Dao.xml";
+        }
 
         if(template.contains("list.html.vm")){
             return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "views" + File.separator
@@ -239,7 +240,6 @@ public class GenUtils {
         if(template.contains("menu.sql.vm")){
             return "sql" + File.separator + className.toLowerCase() + "_menu.sql";
         }
-
         return null;
     }
 }

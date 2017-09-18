@@ -10,7 +10,7 @@
         email=自己的邮箱
         tablePrefix=t_(默认表名前缀为"t_",例如sys_)
         
-    3、自己存入数据库的试图路径去resources/template/menu.sql.vm修改
+    3、需要自己设置视图模块包，如：modules/mall
     4、生成的sql脚本去数据库执行就会自动加入到菜单管理里面去
     5、不同的项目需要修改模板文件头部的部分包引用路劲（这里要根据生成到的项目来改），如下：
         import cn.gzyinyuan.yy.common.utils.PageUtils;
