@@ -16,6 +16,7 @@
         import cn.gzyinyuan.yy.common.utils.PageUtils;
         import cn.gzyinyuan.yy.common.utils.Query;
         import cn.gzyinyuan.yy.common.utils.R;
+    6、在启动类中头部一定要根据自己的基础包名来，如：@MapperScan("cn.gzyinyuan.yy")
         
 # Session与Cookie基础
     由于http协议是无状态的协议，为了能够记住请求的状态，于是引入了Session
